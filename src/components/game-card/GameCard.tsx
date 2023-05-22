@@ -1,3 +1,53 @@
-export const GameCard = () => {
-     return <h1>GameCard</h1>;
+import { AxiosError } from 'axios';
+import { Match, Root } from '../../interfaces/interface';
+import useStyles from './useStyles';
+
+interface IGameCard {
+  error: AxiosError<any> | null;
+  isLoading: boolean;
+  data: Root | null;
+}
+
+export const GameCard = ({ error, isLoading, data }: IGameCard) => {
+  const classes = useStyles();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error:{error.message}</div>;
+  }
+
+  return (
+    <div className={classes.gameCardContainer}>
+      <h1 className={classes.gameCardHeading}>scheduled Games</h1>
+      {data?.matches.map((game: Match) => (
+        <div key={game.id} className={classes.card}>
+          <div>
+            <h2 className={classes.cardTitle}>
+              <img
+                src={`https://crests.football-data.org/${game.homeTeam.id}.svg`}
+                alt={game.homeTeam.name}
+                className='team-crest'
+              />
+              {`${game.homeTeam.name} `} vs {`${game.awayTeam.name} `}
+              <img
+                src={`https://crests.football-data.org/${game.awayTeam.id}.svg`}
+                alt={game.awayTeam.name}
+                className='team-crest'
+              />
+            </h2>
+            {game.score.fullTime.homeTeam !== null
+              ? `${game.score.fullTime.homeTeam}-${game.score.fullTime.awayTeam}`
+              : 'Not played yet'}
+          </div>
+          <p className={classes.cardText}>Date: {game.utcDate}</p>
+          <p className={`${classes.cardText} ${classes.cardTextBold}`}>
+            Status: {game.status}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
 };
