@@ -1,6 +1,8 @@
 import { AxiosError } from 'axios';
+import { useCallback } from 'react';
 import { Match, Root } from '../../interfaces/interface';
 import useStyles from './useStyles';
+import { formatDate } from '../../utils/date';
 
 interface IGameCard {
   error: AxiosError<any> | null;
@@ -10,6 +12,10 @@ interface IGameCard {
 
 export const GameCard = ({ error, isLoading, data }: IGameCard) => {
   const classes = useStyles();
+
+  const truncatedText = useCallback((text: string, maxLength: number) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -31,7 +37,8 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
                 alt={game.homeTeam.name}
                 className='team-crest'
               />
-              {`${game.homeTeam.name} `} vs {`${game.awayTeam.name} `}
+              {` ${truncatedText(game.homeTeam.name, 15)} `} vs
+              {` ${truncatedText(game.awayTeam.name, 15)} `}
               <img
                 src={`https://crests.football-data.org/${game.awayTeam.id}.svg`}
                 alt={game.awayTeam.name}
@@ -42,7 +49,7 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
               ? `${game.score.fullTime.homeTeam}-${game.score.fullTime.awayTeam}`
               : 'Not played yet'}
           </div>
-          <p className={classes.cardText}>Date: {game.utcDate}</p>
+          <p className={classes.cardText}>Date: {formatDate(game.utcDate)}</p>
           <p className={`${classes.cardText} ${classes.cardTextBold}`}>
             Status: {game.status}
           </p>

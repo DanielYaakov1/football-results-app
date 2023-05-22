@@ -11,9 +11,9 @@ export const HomePage = () => {
   });
 
   return (
-    <>
+    <div>
       <h1>HOME PAGE</h1>
       <GameCard data={data} isLoading={isLoading} error={error} />
-    </>
+    </div>
   );
 };
