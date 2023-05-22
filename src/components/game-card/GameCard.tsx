@@ -1,8 +1,8 @@
 import { AxiosError } from 'axios';
-import { useCallback } from 'react';
 import { Match, Root } from '../../interfaces/interface';
 import useStyles from './useStyles';
 import { formatDate } from '../../utils/date';
+import { truncatedText } from '../../utils/text';
 
 interface IGameCard {
   error: AxiosError<any> | null;
@@ -12,10 +12,6 @@ interface IGameCard {
 
 export const GameCard = ({ error, isLoading, data }: IGameCard) => {
   const classes = useStyles();
-
-  const truncatedText = useCallback((text: string, maxLength: number) => {
-    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
