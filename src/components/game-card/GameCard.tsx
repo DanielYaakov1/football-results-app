@@ -1,13 +1,13 @@
 import { AxiosError } from 'axios';
-import { Match, Root } from '../../interfaces/interface';
+import { Match } from '../../interfaces/interface';
 import useStyles from './useStyles';
 import { formatDate } from '../../utils/date';
 import { truncatedText } from '../../utils/text';
 
 interface IGameCard {
-  error: AxiosError<any> | null;
+  error: AxiosError<unknown> | null;
   isLoading: boolean;
-  data: Root | null;
+  data: Match[] | null;
 }
 
 export const GameCard = ({ error, isLoading, data }: IGameCard) => {
@@ -24,7 +24,7 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
   return (
     <div className={classes.gameCardContainer}>
       <h1 className={classes.gameCardHeading}>scheduled Games</h1>
-      {data?.matches.map((game: Match) => (
+      {data?.map((game: Match) => (
         <div key={game.id} className={classes.card}>
           <div>
             <h2 className={classes.cardTitle}>

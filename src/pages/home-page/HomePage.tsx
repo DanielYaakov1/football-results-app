@@ -1,6 +1,8 @@
+import { useCallback, useEffect, useState } from 'react';
 import GameCard from '../../components/game-card';
 import { useHttp } from '../../hooks/useHttp';
-import { Root } from '../../interfaces/interface';
+import { Root, Match } from '../../interfaces/interface';
+import Sorting from '../../components/Sorting';
 
 export const HomePage = () => {
   const url = '';
@@ -9,11 +11,40 @@ export const HomePage = () => {
       'X-Auth-Token': process.env.FOOTBALL_DATA_API_KEY,
     },
   });
+  const [filteredMatch, setFilteredMatch] = useState<Match[]>(
+    data?.matches || []
+  );
+  const [selectedStatus, setSelectedStatus] = useState<string>('All');
+  const statusOptions = ['All', 'SCHEDULED', 'FINISHED'];
+
+  const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedStatus(event.target.value);
+  };
+
+  const sortedGameStatus = useCallback(() => {
+    if (data) {
+      let filteredGames = data.matches;
+      if (selectedStatus !== 'All') {
+        filteredGames = filteredGames.filter((game) =>
+          game.status.includes(selectedStatus)
+        );
+      }
+      setFilteredMatch(filteredGames);
+    }
+  }, [data, selectedStatus]);
+
+  useEffect(() => {
+    sortedGameStatus();
+  }, [sortedGameStatus]);
 
   return (
     <div>
-      <h1>HOME PAGE</h1>
-      <GameCard data={data} isLoading={isLoading} error={error} />
+      <Sorting
+        selectedStatus={selectedStatus}
+        statusOptions={statusOptions}
+        handleStatusChange={handleStatusChange}
+      />
+      <GameCard data={filteredMatch} isLoading={isLoading} error={error} />
     </div>
   );
 };
