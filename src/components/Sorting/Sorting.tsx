@@ -1,21 +1,32 @@
+import useStyles from './useStyles';
+
 interface ISorting {
-  selectedStatus: string;
+  value: string;
   // eslint-disable-next-line no-unused-vars
-  handleStatusChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  statusOptions: string[];
+  handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: string[];
+  label: string;
 }
-export const Sorting = ({
-  selectedStatus,
-  handleStatusChange,
-  statusOptions,
-}: ISorting) => {
+
+export const Sorting = ({ value, handleChange, options, label }: ISorting) => {
+  const classes = useStyles();
   return (
-    <select value={selectedStatus} onChange={handleStatusChange}>
-      {statusOptions.map((status) => (
-        <option key={status} value={status}>
-          {status}
-        </option>
-      ))}
-    </select>
+    <div className={classes.sortingContainer}>
+      <label htmlFor='sorting-select' className={classes.sortingLabel}>
+        {label}
+      </label>
+      <select
+        id='sorting-select'
+        value={value}
+        onChange={handleChange}
+        className={classes.sortingSelect}
+      >
+        {options.map((status) => (
+          <option key={status} value={status}>
+            {status}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };

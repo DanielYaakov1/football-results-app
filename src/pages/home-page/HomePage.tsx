@@ -40,9 +40,10 @@ export const HomePage = () => {
   return (
     <div>
       <Sorting
-        selectedStatus={selectedStatus}
-        statusOptions={statusOptions}
-        handleStatusChange={handleStatusChange}
+        value={selectedStatus}
+        options={statusOptions}
+        handleChange={handleStatusChange}
+        label='Sorting by Status:'
       />
       <GameCard data={filteredMatch} isLoading={isLoading} error={error} />
     </div>

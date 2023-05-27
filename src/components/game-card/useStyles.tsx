@@ -12,22 +12,31 @@ const useStyles = makeStyles({
     marginBottom: '20px',
   },
   card: {
-    padding: '20px',
+    padding: '0px',
     width: '100%',
     border: '1px solid #ccc',
     borderRadius: '5px',
     marginBottom: '20px',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#9babbb78',
+    backgroundColor: '#5c44b2c8',
     opacity: '0.8',
   },
+
   cardTitle: {
     fontWeight: 'bold',
-    marginBottom: '10px',
-    '& .team-crest': {
-      width: '30px',
-      height: '30px',
-    },
+    boxSizing: 'border-box',
+    margin: 5,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  teamInfo: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  teamCrest: {
+    width: 30,
+    height: 30,
+    marginRight: 5,
   },
   cardText: {
     margin: '5px 0',

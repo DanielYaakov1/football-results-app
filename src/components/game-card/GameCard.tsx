@@ -23,23 +23,29 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
 
   return (
     <div className={classes.gameCardContainer}>
-      <h1 className={classes.gameCardHeading}>scheduled Games</h1>
       {data?.map((game: Match) => (
         <div key={game.id} className={classes.card}>
           <div>
             <h2 className={classes.cardTitle}>
-              <img
-                src={`https://crests.football-data.org/${game.homeTeam.id}.svg`}
-                alt={game.homeTeam.name}
-                className='team-crest'
-              />
-              {` ${truncatedText(game.homeTeam.name, 15)} `} vs
-              {` ${truncatedText(game.awayTeam.name, 15)} `}
-              <img
-                src={`https://crests.football-data.org/${game.awayTeam.id}.svg`}
-                alt={game.awayTeam.name}
-                className='team-crest'
-              />
+              <div className={classes.teamInfo}>
+                <img
+                  src={`https://crests.football-data.org/${game.homeTeam.id}.svg`}
+                  alt={game.homeTeam.name}
+                  className={classes.teamCrest}
+                />
+                <span>{truncatedText(game.homeTeam.name, 15)}</span>
+              </div>
+            </h2>
+            VS
+            <h2 className={classes.cardTitle}>
+              <div className={classes.teamInfo}>
+                <img
+                  src={`https://crests.football-data.org/${game.awayTeam.id}.svg`}
+                  alt={game.awayTeam.name}
+                  className={classes.teamCrest}
+                />
+                <span>{truncatedText(game.awayTeam.name, 15)}</span>
+              </div>
             </h2>
             {game.score.fullTime.homeTeam !== null
               ? `${game.score.fullTime.homeTeam}-${game.score.fullTime.awayTeam}`
