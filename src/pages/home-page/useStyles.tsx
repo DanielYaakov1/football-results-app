@@ -1,7 +1,7 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
-     root: {},
+  root: {},
 });
 
 export default useStyles;
