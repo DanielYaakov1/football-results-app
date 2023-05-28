@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     borderRadius: '5px',
     marginBottom: '20px',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#5c44b2c8',
+    backgroundColor: '#ccccccf2',
     opacity: '0.8',
   },
 

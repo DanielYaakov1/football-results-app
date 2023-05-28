@@ -3,6 +3,7 @@ import { Match } from '../../interfaces/interface';
 import useStyles from './useStyles';
 import { formatDate } from '../../utils/date';
 import { truncatedText } from '../../utils/text';
+import RESOURCES from '../../shared/constants/resources';
 
 interface IGameCard {
   error: AxiosError<unknown> | null;
@@ -14,11 +15,16 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
   const classes = useStyles();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>{RESOURCES.LOADING_TEXT}</div>;
   }
 
   if (error) {
-    return <div>Error:{error.message}</div>;
+    return (
+      <div>
+        {RESOURCES.ERROR_TEXT}
+        {error.message}
+      </div>
+    );
   }
 
   return (
@@ -36,7 +42,7 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
                 <span>{truncatedText(game.homeTeam.name, 15)}</span>
               </div>
             </h2>
-            VS
+            {RESOURCES.MATCH_GAME_TEAM_AGAINST_TEAM_TEXT}
             <h2 className={classes.cardTitle}>
               <div className={classes.teamInfo}>
                 <img
@@ -49,11 +55,15 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
             </h2>
             {game.score.fullTime.homeTeam !== null
               ? `${game.score.fullTime.homeTeam}-${game.score.fullTime.awayTeam}`
-              : 'Not played yet'}
+              : RESOURCES.MATCH_GAME_NOT_PLAYED_TEXT}
           </div>
-          <p className={classes.cardText}>Date: {formatDate(game.utcDate)}</p>
+          <p className={classes.cardText}>
+            {RESOURCES.MATCH_GAME_DATE_TEXT}
+            {formatDate(game.utcDate)}
+          </p>
           <p className={`${classes.cardText} ${classes.cardTextBold}`}>
-            Status: {game.status}
+            {RESOURCES.MATCH_GAME_STATUS_TEXT}
+            {game.status}
           </p>
         </div>
       ))}
