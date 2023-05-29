@@ -4,6 +4,7 @@ import useStyles from './useStyles';
 import { formatDate } from '../../utils/date';
 import { truncatedText } from '../../utils/text';
 import RESOURCES from '../../shared/constants/resources';
+import DataGrid from '../data-grid/DataGrid';
 
 interface IGameCard {
   error: AxiosError<unknown> | null;
@@ -28,7 +29,7 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
   }
 
   return (
-    <div className={classes.gameCardContainer}>
+    <DataGrid>
       {data?.map((game: Match) => (
         <div key={game.id} className={classes.card}>
           <div>
@@ -67,6 +68,6 @@ export const GameCard = ({ error, isLoading, data }: IGameCard) => {
           </p>
         </div>
       ))}
-    </div>
+    </DataGrid>
   );
 };
