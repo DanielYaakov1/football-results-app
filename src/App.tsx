@@ -6,6 +6,8 @@ import VIDEOS from './shared/constants/videos';
 import NotFound from './pages/not-found';
 import RESOURCES from './shared/constants/resources';
 import ROUTES from './shared/constants/routes';
+import About from './pages/about';
+import Contact from './pages/contact';
 
 function App() {
   const routes = [
@@ -17,12 +19,12 @@ function App() {
     {
       path: ROUTES.ABOUT,
       name: RESOURCES.HEADER_TAB_ABOUT_TEXT,
-      component: HomePage,
+      component: About,
     },
     {
       path: ROUTES.CONTACT,
       name: RESOURCES.HEADER_TAB_CONTACT_TEXT,
-      component: HomePage,
+      component: Contact,
     },
   ];
 
