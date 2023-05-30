@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const About: React.FC = () => {
+export const About: React.FC = memo(() => {
   const classes = useStyles();
 
   return (
@@ -107,4 +107,4 @@ export const About: React.FC = () => {
       </div>
     </div>
   );
-};
+});
