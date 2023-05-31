@@ -15,8 +15,7 @@ const useStyles = makeStyles({
   },
   description: {
     fontSize: '1rem',
-    marginBottom: 5,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   splitContainer: {
     display: 'flex',
@@ -57,7 +56,10 @@ export const About: React.FC = memo(() => {
             <p className={classes.description}>
               The Football Results App is a web application that provides live
               scores, match results, and other information about football
-              matches from various leagues around the world.
+              matches from various leagues around the world. Lorem ipsum dolor
+              sit amet consectetur, adipisicing elit. Quos, et! Reiciendis nisi
+              soluta excepturi voluptates tenetur commodi id voluptatem eos in,
+              quia, similique corrupti magni! Et ducimus fuga nisi similique?
             </p>
 
             <p className={classes.description}>
@@ -69,7 +71,11 @@ export const About: React.FC = memo(() => {
               With our app, you can easily stay up-to-date with the latest
               scores and results of your favorite teams and leagues. Whether
               youre interested in Premier League, La Liga, Serie A, or any other
-              league, weve got you covered.
+              league, weve got you covered. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit. Facere odit magni tempora architecto
+              similique maiores vitae tempore hic veritatis qui molestiae
+              ratione neque commodi nam laborum, beatae reiciendis dolorum
+              pariatur?
             </p>
             <p className={classes.description}>
               The app offers a user-friendly interface, making it easy to
