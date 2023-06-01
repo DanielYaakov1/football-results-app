@@ -8,5 +8,9 @@ const RESOURCES = {
   HEADER_TAB_HOME_TEXT: 'Home',
   HEADER_TAB_ABOUT_TEXT: 'About',
   HEADER_TAB_CONTACT_TEXT: 'Contact',
+  CONTACT_US_PLACEHOLDER_INPUT_EMAIL: 'Enter your email',
+  CONTACT_US_PLACEHOLDER_INPUT_NAME: 'Enter your name',
+  CONTACT_US_PLACEHOLDER_INPUT_MESSAGE: 'Enter your message',
+  CONTACT_US_FORM_EMPTY_FIELDS_MESSAGE: 'Please fill in all fields',
 };
 export default RESOURCES;
