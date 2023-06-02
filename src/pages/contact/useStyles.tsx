@@ -1,12 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: 10,
-  },
   heading: {
     fontSize: '1.5rem',
     fontWeight: 'bold',
@@ -16,20 +10,21 @@ const useStyles = makeStyles({
     fontSize: '1rem',
     textAlign: 'left',
   },
-  splitContainer: {
+  mainContainer: {
     display: 'flex',
     height: '100vh',
     width: '100%',
   },
-  textContainer: {
+  leftSideContainer: {
     backgroundColor: '#8f8b8bda',
     height: '100%',
     width: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
   },
-  imageContainer: {
+  rightSideImageContainer: {
     height: '100%',
     width: '50%',
     display: 'flex',
